@@ -19,8 +19,8 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-    		//ok funciono
-        return new ViewModel();
+    	$sms = "Teste de git";
+        return new ViewModel(array("mensagem"=>$sms));
     }
     
 }
