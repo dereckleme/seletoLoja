@@ -3,10 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: mysql02-farm13.kinghost.net
--- Tempo de Geração: Mar 27, 2014 as 03:19 PM
+-- Tempo de Geração: Mar 27, 2014 as 03:21 PM
 -- Versão do Servidor: 5.5.32
 -- Versão do PHP: 5.2.17
 
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -17,8 +18,6 @@
 --
 -- Banco de Dados: `lojaseleto`
 --
-CREATE DATABASE `lojaseleto` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE lojaseleto;
 
 -- --------------------------------------------------------
 
@@ -32,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `cidade` (
   `estado` int(5) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Cidade_estado` (`estado`)
-) TYPE=InnoDB  AUTO_INCREMENT=5565 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5565 ;
 
 --
 -- Extraindo dados da tabela `cidade`
@@ -5619,7 +5618,7 @@ CREATE TABLE IF NOT EXISTS `estado` (
   `pais` int(7) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Estado_pais` (`pais`)
-) TYPE=InnoDB  AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Extraindo dados da tabela `estado`
@@ -5667,7 +5666,7 @@ CREATE TABLE IF NOT EXISTS `impostos_tributario` (
   PRIMARY KEY (`idtributario`),
   KEY `fk_impostos_tributario_Produto_Produtos1_idx` (`Produto_idProduto`),
   KEY `fk_impostos_tributario_mapeamento_estado1_idx` (`mapeamento_idestado`)
-) TYPE=InnoDB AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `impostos_tributario`
@@ -5687,7 +5686,7 @@ CREATE TABLE IF NOT EXISTS `mapeamento_cidade` (
   `nome` varchar(255) NOT NULL,
   PRIMARY KEY (`idcidade`),
   KEY `fk_mapeamento_cidade_mapeamento_estado1_idx` (`mapeamento_idestado`)
-) TYPE=InnoDB  AUTO_INCREMENT=17693 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17693 ;
 
 --
 -- Extraindo dados da tabela `mapeamento_cidade`
@@ -11273,7 +11272,7 @@ CREATE TABLE IF NOT EXISTS `mapeamento_estado` (
   `nome` varchar(255) NOT NULL,
   `NOMECLATURA` varchar(255) NOT NULL,
   PRIMARY KEY (`idmapeamento_estado`)
-) TYPE=InnoDB  AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 --
 -- Extraindo dados da tabela `mapeamento_estado`
@@ -11319,7 +11318,7 @@ CREATE TABLE IF NOT EXISTS `newsletter_newsletter` (
   `nome` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idnewsletter`)
-) TYPE=InnoDB AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `newsletter_newsletter`
@@ -11339,7 +11338,7 @@ CREATE TABLE IF NOT EXISTS `pagamento_atualizastatus` (
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`idatualizaStatus`),
   KEY `fk_Pagamento_atualizaStatus_Pagamento_ControleRecibo1_idx` (`Pagamento_idControleRecibo`)
-) TYPE=InnoDB AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `pagamento_atualizastatus`
@@ -11359,7 +11358,7 @@ CREATE TABLE IF NOT EXISTS `pagamento_controleestoque` (
   `dt_atualizacao` datetime DEFAULT NULL,
   PRIMARY KEY (`idControleEstoque`),
   KEY `fk_Pagamento_ControleEstoque_Produto_Produtos_idx` (`Produto_idProduto`)
-) TYPE=InnoDB  AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `pagamento_controleestoque`
@@ -11382,7 +11381,7 @@ CREATE TABLE IF NOT EXISTS `pagamento_controlepedido` (
   PRIMARY KEY (`idPagamento_ControlePedido`),
   KEY `fk_Pagamento_ControlePedido_Produto_Produtos1_idx` (`Produtos_idProduto`),
   KEY `fk_Pagamento_ControlePedido_Pagamento_ControleRecibo1_idx` (`idControleRecibo`)
-) TYPE=InnoDB AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `pagamento_controlepedido`
@@ -11412,7 +11411,7 @@ CREATE TABLE IF NOT EXISTS `pagamento_controlerecibo` (
   KEY `fPagamento_2` (`fPagamento`),
   KEY `sPagamento` (`sPagamento`),
   KEY `idcadastro` (`idcadastroRef`)
-) TYPE=InnoDB AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `pagamento_controlerecibo`
@@ -11429,7 +11428,7 @@ CREATE TABLE IF NOT EXISTS `pagamento_status_fpagamento` (
   `idStatus` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idStatus`)
-) TYPE=InnoDB  AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `pagamento_status_fpagamento`
@@ -11452,7 +11451,7 @@ CREATE TABLE IF NOT EXISTS `pagamento_status_spagamento` (
   `idStatus` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idStatus`)
-) TYPE=InnoDB  AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `pagamento_status_spagamento`
@@ -11478,7 +11477,7 @@ CREATE TABLE IF NOT EXISTS `pais` (
   `nome` varchar(60) DEFAULT NULL,
   `sigla` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) TYPE=InnoDB  AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `pais`
@@ -11498,7 +11497,7 @@ CREATE TABLE IF NOT EXISTS `produto_categorias` (
   `nome` varchar(255) DEFAULT NULL,
   `slug_categoria` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idCategorias`)
-) TYPE=InnoDB  AUTO_INCREMENT=47 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
 
 --
 -- Extraindo dados da tabela `produto_categorias`
@@ -11520,7 +11519,7 @@ CREATE TABLE IF NOT EXISTS `produto_imagens` (
   `Produto_Produtos_idProduto` int(11) NOT NULL,
   PRIMARY KEY (`idProduto_Imagens`),
   KEY `fk_Produto_Imagens_Produto_Produtos1_idx` (`Produto_Produtos_idProduto`)
-) TYPE=InnoDB AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `produto_imagens`
@@ -11542,7 +11541,7 @@ CREATE TABLE IF NOT EXISTS `produto_nutricional` (
   PRIMARY KEY (`idProduto_Nutricional`),
   KEY `fk_Produto_Nutricional_Produto_Nutricional_nomes1_idx` (`Produto_idNutricional_nomes`),
   KEY `fk_Produto_Nutricional_Produto_Produtos1_idx` (`Produto_idProduto`)
-) TYPE=InnoDB AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `produto_nutricional`
@@ -11559,7 +11558,7 @@ CREATE TABLE IF NOT EXISTS `produto_nutricional_nomes` (
   `idNutricional_nomes` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idNutricional_nomes`)
-) TYPE=InnoDB  AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Extraindo dados da tabela `produto_nutricional_nomes`
@@ -11600,7 +11599,7 @@ CREATE TABLE IF NOT EXISTS `produto_produtos` (
   `ativo` tinyint(2) NOT NULL DEFAULT '1',
   PRIMARY KEY (`idProduto`),
   KEY `fk_Produto_Produtos_Produto_Subcategoria1_idx` (`Produto_idSubcategoria`)
-) TYPE=InnoDB  COMMENT='Campo valor,  decial (10,2) padrão brasileiro\n' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Campo valor,  decial (10,2) padrão brasileiro\n' AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `produto_produtos`
@@ -11619,7 +11618,7 @@ CREATE TABLE IF NOT EXISTS `produto_referencia` (
   `idReferencia` int(11) NOT NULL AUTO_INCREMENT,
   `nome_referencia` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idReferencia`)
-) TYPE=InnoDB AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `produto_referencia`
@@ -11639,7 +11638,7 @@ CREATE TABLE IF NOT EXISTS `produto_referenciasetter` (
   PRIMARY KEY (`idPReferenciaSetter`),
   KEY `fk_Produto_ReferenciaSetter_Produto_Referencia1_idx` (`idReferencia`),
   KEY `fk_Produto_ReferenciaSetter_Produto_Categorias1_idx` (`idCategorias`)
-) TYPE=InnoDB AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `produto_referenciasetter`
@@ -11659,7 +11658,7 @@ CREATE TABLE IF NOT EXISTS `produto_subcategoria` (
   `slug_subcategoria` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idSubcategoria`),
   KEY `fk_Produto_Subcategoria_Produto_Categorias1_idx` (`Produto_idCategorias`)
-) TYPE=InnoDB  AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Extraindo dados da tabela `produto_subcategoria`
@@ -11696,7 +11695,7 @@ CREATE TABLE IF NOT EXISTS `usuario_cadastro` (
   PRIMARY KEY (`idcadastro`),
   KEY `fk_usuario_cadastro_Usuario_Usuarios1_idx` (`Usuarios_idUsuarios`),
   KEY `fk_usuario_cadastro_mapeamento_cidade1_idx` (`mapeamento_idcidade`)
-) TYPE=InnoDB  AUTO_INCREMENT=129 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=129 ;
 
 --
 -- Extraindo dados da tabela `usuario_cadastro`
@@ -11717,7 +11716,7 @@ CREATE TABLE IF NOT EXISTS `usuario_propaganda` (
   `usuario_idcadastro` int(11) NOT NULL,
   PRIMARY KEY (`idpropaganda`),
   KEY `fk_usuario_propaganda_usuario_cadastro1_idx` (`usuario_idcadastro`)
-) TYPE=InnoDB AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `usuario_propaganda`
@@ -11737,7 +11736,7 @@ CREATE TABLE IF NOT EXISTS `usuario_usuarios` (
   `email` varchar(255) DEFAULT NULL,
   `nivel` int(11) NOT NULL,
   PRIMARY KEY (`idUsuario`)
-) TYPE=InnoDB  AUTO_INCREMENT=61 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
 
 --
 -- Extraindo dados da tabela `usuario_usuarios`
