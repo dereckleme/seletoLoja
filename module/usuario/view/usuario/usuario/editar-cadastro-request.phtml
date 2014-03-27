@@ -1,0 +1,71 @@
+
+         <div id="FormRecebimento">
+          <div id="BoxFormRecebimento">
+                	<div id="recebimento">
+                		<img class="atencaoform" src="<?=$this->basePath()?>/images/atencaoEditar.png">
+							<form class="formActionResquest">
+					                  <label class="FormCEP">CEP*:</label><br/><input type="text" class="BoxCEPResquest" value="<?if(method_exists($this->data,'getCep')) print $this->data->getCep();?>"><span class="ajaxMsg" style="color:#ff7f25;display:none;font-weight:bold"></span><br/><br/>
+					                  <label class="FormEndereco">Endereço*:</label><br/><input type="text" class="BoxEnderecoResquest" value="<?if(method_exists($this->data,'getRua')) print $this->data->getRua()?>"><br/><p class="texto_info">(Deverá ser informado se o endereço é Rua/Avenida/
+Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
+
+					                  <label class="FormNumero">Numero*:</label>                                      
+                                      <label class="FormBairroResquest">Bairro*:</label>
+
+                                      <br/>
+					                  <input type="text" class="BoxNumeroResquest" value="<?if(method_exists($this->data,'getNumero')) print $this->data->getNumero()?>">
+					                  <input type="text" class="BoxBairroResquest" value="<?if(method_exists($this->data,'getBairro')) print $this->data->getBairro()?>"><br/><br/>
+
+					                  <label class="FormEstado">Estado*:</label><br/>	
+					                  <select class="BoxEstado">
+					                  <?php 
+					                          foreach($this->estados AS $estados)
+					                          {
+					                      ?>
+					                      <option value="<?=$estados->getNomeclatura()?>" <?php if($this->cidadeEstadoUF == $estados->getNomeclatura()) print "selected"?>><?=$estados->getNome()?></option>
+					                      <?php 
+					                          }?>
+					                  </select><br/><br/>
+					                  
+					                 <?php
+                                            if(count($this->cidades) >= 1)
+                                            {
+                                                ?>
+                                       <label class="FormCidadeResquest">Cidade*:</label><br/>
+                                       <select class="BoxCidade">
+                                          <?php 
+                                              foreach($this->cidades AS $cidade)
+                                              {
+                                          ?>
+                                                   <option value="<?=$cidade->getIdcidade()?>" <?php if($this->cidadeSelected == $cidade->getIdcidade()) print "selected"?>><?=$cidade->getNome()?></option>
+                                           <?php 
+                                              }
+                                               ?>
+                                       </select>         
+                                                <?php 
+                                            }
+                                            else
+                                            {
+					                  ?>
+					                   <label class="FormCidadeResquest">Cidade*:</label><br/>
+					                   <select class="BoxCidade" disabled="disabled"><option value="">Selecione</option></select>
+					                   <?php 
+                                            }
+					                   ?><br/><br/>
+					                   <?if(method_exists($this->data,'getCep'))
+					                   {?>
+					                   <input type="submit" title="Voltar" value="Voltar" class="VoltarEnderecoResquest">
+					                   <input type="submit" title="Salvar Endereço" value="Salvar Endereço" class="EventcadastrarEnderecoResquest"><br/><br/><br/>
+                                        <?php 
+					                   }else
+					                   {
+					                   	?>
+					                   	 <input type="submit" title="Voltar" value="Voltar" class="VoltarEnderecoResquest">
+					                   	 <input type="submit" title="Salvar Endereço" value="Salvar Endereço" class="EventcadastrarEnderecoResquestNovo"><br/><br/><br/>
+					                   	<?php 
+					                   }
+                                        ?>
+					                </form>
+
+				  </div>   
+          </div>
+        </div>

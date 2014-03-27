@@ -7,10 +7,15 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Application;
+namespace Usuario;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\ModuleManager\ModuleManager;
+
+use Usuario\Service\Usuario AS serviceUsuario;
+use Usuario\Service\Cadastro AS serviceCadastro;
+use Usuario\Auth\Adapter AS AuthAdapter;
 
 class Module
 {
@@ -35,5 +40,24 @@ class Module
                 ),
             ),
         );
+    }		
+    public function getServiceConfig() {
+    
+    	return array(
+    			'factories' => array(
+    					'Usuario\Service\Usuario' => function($service) {
+    						$UsuarioService = new serviceUsuario($service->get("Doctrine\ORM\EntityManager"));
+    						return $UsuarioService;
+    					},
+    					'Usuario\Service\Cadastro' => function($service) {
+    						$UsuarioService = new serviceCadastro($service->get("Doctrine\ORM\EntityManager"));
+    						return $UsuarioService;
+    					},
+    					'Usuario\Auth\Adapter' => function($sm)
+    					{
+    						return new AuthAdapter($sm->get('Doctrine\ORM\EntityManager'));
+    					}
+    			),
+    	);
     }
 }

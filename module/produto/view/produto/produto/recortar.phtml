@@ -1,0 +1,30 @@
+<div class="alert">  
+  <strong><h4>Imagem(s) do Produto</h4></strong> <br/> Nessa sessão você sobe e ou recorta as imagens de seus produtos de acordo com as suas necessidades.
+</div>
+
+<div class="row">
+    <div class="span12">
+        <h3>Imagem do Produto</h3>
+    </div>
+</div>
+
+<hr/>
+
+<div class="row" style="margin-top: 20px;">
+    <div class="span12">
+       <img id="cropbox" alt="" src="<?php echo $this->basepath()?>/images/produtos/large/<?php echo $this->foto;?>" style="margin-left: 20px;">
+       
+       <form action="<?php echo $this->url('admin-produto-home/admin-default', array('action' => 'recortar'));?>" method="post">
+           <input type="hidden" name="imagem" value="<?php echo $this->foto;?>">
+           <input type="hidden" name="idproduto" value="<?php echo $this->idproduto;?>">
+           <?php if($this->idprodutoImagem): ?>
+               <input type="hidden" name="idprodutoImagem" value="<?php echo $this->idprodutoImagem;?>">
+           <?php endif; ?>
+           <input type="hidden" id="x" name="x" />
+		   <input type="hidden" id="y" name="y" />		   
+		   <input type="hidden" id="w" name="w" />
+		   <input type="hidden" id="h" name="h" />
+		   <input type="submit" name="acao" value="Recortar" class="btn btn-large btn-inverse" style="margin-top: 10px;"/>
+       </form>      
+    </div>
+</div>

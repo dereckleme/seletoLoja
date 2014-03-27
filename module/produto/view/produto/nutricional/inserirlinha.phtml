@@ -1,0 +1,9 @@
+<input type="text" value="<?php echo $this->nomeproduto; ?>" disabled="disabled" placeholder="fff" id="produtos" name="produtos">
+<select style="margin-left:6px;" id="idnutricionalNomes" name="idnutricionalNomes">
+    <option value="">--ITENS--</option>
+    <?php foreach ($this->itens as $item): ?>
+        <option value="<?php echo $item->getIdnutricionalNomes(); ?>"><?php echo $item->getNome(); ?></option>
+    <?php endforeach; ?>
+</select>
+<input type="text" value="" style="margin-left:6px;" placeholder="Quantidade" id="quantidade" name="quantidade">
+<input type="text" value="" style="margin-left:6px;" placeholder="Valor Diário" id="vd" name="vd">

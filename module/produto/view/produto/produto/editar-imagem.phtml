@@ -1,0 +1,63 @@
+<div class="alert">  
+  <strong><h4>Imagem(s) do Produto</h4></strong> <br/> Nessa sessão você irá selecionar cada imagem para ser recortada para se adequar nas medidas do site. <br/>
+  Caso contrário, as imagens irão ficar inadequadas para o site e poderá quebrar o layout do mesmo.
+</div>
+
+<div class="row">
+    <div class="span12">
+        <h3>Imagem(s) do Produto</h3>
+    </div>
+</div>
+
+<hr/>
+
+<div class="row">
+    <ul class="thumbnails" style="margin-left: 10px;">
+      <?php foreach($this->produto as $produto): ?>
+          <li class="span2">
+            <div class="thumbnail">
+                <img src="<?php echo $this->basepath()?>/images/produtos/large/<?php echo $produto->getFoto();?>" width="200" height="200" alt="Imagem do Produto <?php echo $produto->getTitulo();?>">
+                <div class="caption">
+                    <form action="<?php echo $this->url('admin-produto-home/admin-produto-gerenciar', array('action'=>'recortar'))?>" method="post" style="margin-bottom: 0px;">
+                        <input type="hidden" name="idproduto" value="<?php echo $produto->getIdproduto();?>">
+                        <input type="hidden" name="imagem" value="<?php echo $produto->getFoto()?>">
+                        <button class="btn btn-info btn-mini" style="float: left; margin-right: 7px;">
+                            <i class="icon-adjust"></i> Ajustar
+                        </button>                        
+                    </form>  
+                    <button class="btn btn-danger btn-mini" onclick="return confirm('Confima a excluir está Imagem?');">
+                        <i class="icon-remove-sign"></i> Excluir
+                    </button>                 
+                </div>
+            </div>        
+          </li>
+          <?php if(count($produto->getImagens()) > 0): ?>
+              <?php foreach($produto->getImagens() as $imagens): ?>
+                  <li class="span2">
+                    <div class="thumbnail">
+                        <img src="<?php echo $this->basepath()?>/images/produtos/large/<?php echo $imagens->getImages();?>" width="200" height="200" alt="Imagem do Produto <?php echo $produto->getTitulo();?>">
+                        <div class="caption">
+                            <form action="<?php echo $this->url('admin-produto-home/admin-produto-gerenciar', array('action'=>'recortar'))?>" method="post" style="margin-bottom: 0px;margin-left: 20px;">
+                                <input type="hidden" name="idproduto" value="<?php echo $produto->getIdproduto();?>">
+                                <input type="hidden" name="idprodutoImagem" value="<?php echo $imagens->getIdprodutoImagens()?>">
+                                <input type="hidden" name="imagem" value="<?php echo $imagens->getImages()?>">
+                                <button class="btn btn-info" style="float: left; margin-right: 7px;">
+                                    <i class="icon-adjust"></i> Ajustar
+                                </button>
+                            </form>
+                            <button class="btn btn-danger btn-mini" onclick="return confirm('Confima a excluir está Imagem?');">
+                                <i class="icon-remove-sign"></i> Excluir
+                            </button>                   
+                        </div>
+                    </div>        
+                  </li>
+              <?php endforeach; ?>
+          <?php endif; ?>
+      <?php endforeach; ?>
+    </ul>	
+</div>
+<div class="row">
+    <div class="span4">
+        <a class="btn btn-success" href="<?php echo $this->url('admin-produto-home');?>">Finalizar Edição</a>
+    </div>
+</div>

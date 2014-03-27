@@ -9,8 +9,14 @@
     "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": ">2.2.0rc1",
-		"zendframework/zend-developer-tools":"dev-master",
-		"doctrine/doctrine-orm-module":"0.7.*"
+        "zendframework/zendframework": "2.*",
+        "doctrine/doctrine-orm-module": "0.*",
+        "zendframework/zend-developer-tools": "dev-master",
+        "doctrine/data-fixtures": "dev-master",
+        "hounddog/doctrine-data-fixture-module": "dev-master",
+        "doctrine/migrations": "dev-master",
+        "doctrine/common": "dev-master",
+        "gedmo/doctrine-extensions": "dev-master",
+        "webino/webino-image-thumb": "1.*"
     }
 }

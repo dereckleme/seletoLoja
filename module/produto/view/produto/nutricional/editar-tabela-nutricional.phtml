@@ -1,0 +1,45 @@
+<div class="alert alert-block">
+  <h4>Gerenciamento de Tabelas Nutricionais</h4>
+  Nessa sessão você pode gerenciar suas tabelas de nutrição de acordo com suas necessidades.
+</div>
+
+<div class="row" style="margin-top: 50px;">
+    <?php 
+        $form = $this->form;
+        $form->setAttribute('action', $this->url('admin-produto-home/admin-produto-nutricional/admin-produto-nutricional-gerenciar',array('action'=>'editarTabelaNutricional','id'=>$this->idProdutoNutricional)));
+        $form->prepare();
+        echo $this->form()->openTag($form);
+        echo $this->formrow($form->get('id'));
+    ?>
+        <div class="control-group">
+            <label class="control-label" for="idproduto">Produtos</label>
+            <div class="controls">
+              <?php echo $this->formRow($form->get('idproduto')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="idnutricionalNomes">Itens</label>
+            <div class="controls">
+              <?php echo $this->formRow($form->get('idnutricionalNomes')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="quantidade">Quantidade</label>
+            <div class="controls">
+              <?php echo $this->formRow($form->get('quantidade')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="vd">Valor diário</label>
+            <div class="controls">
+              <?php echo $this->formRow($form->get('vd')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+              <a class="btn" href="<?php echo $this->url('admin-produto-home/admin-produto-nutricional'); ?>">Voltar</a>          
+              <button type="submit" class="btn btn-warning">Alterar</button>
+            </div>
+        </div>
+    <?php echo $this->form()->closeTag(); ?>
+</div>
